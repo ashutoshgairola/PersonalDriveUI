@@ -311,7 +311,7 @@
             fa-solid fa-trash-can
           "
         ></i>
-        <a :href="path" download>
+        <a :href="path"  target="_blank" rel="noreferrer noopener">
           <i
           class="
             text-xl text-slate-800
@@ -342,7 +342,7 @@ export default {
   data() {
     return {
       show: true,
-      path: `http://localhost:4000/${sessionStorage.getItem('id')}/${this.name}` ,
+      path: `${process.env.VUE_APP_SERVER_PATH}${sessionStorage.getItem('id')}/${this.name}` ,
       style: "p-10 text-5xl border-2 border bg-slate-200 rounded-lg ",
     };
   },
