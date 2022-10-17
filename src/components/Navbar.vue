@@ -1,9 +1,18 @@
 <template>
   <div>
-    <nav class="w-screen bg-white border-gray-200 pl-2 xl:px-4 py-2.5 dark:bg-slate-900" :class="user">
-      <div
-        class="  flex  justify-between items-center lg:mx-14 sm:mx-5"
-      >
+    <nav
+      class="
+        w-screen
+        bg-white
+        border-gray-200
+        pl-2
+        xl:px-4
+        py-2.5
+        dark:bg-slate-900
+      "
+      :class="user"
+    >
+      <div class="flex justify-between items-center lg:mx-14 sm:mx-5">
         <button @click="redir('/login')" class="flex items-center">
           <span
             class="
@@ -17,7 +26,7 @@
             >Personal Drive</span
           >
         </button>
-        <div class="flex justify-between lg:w-1/2 ">
+        <div class="flex justify-between lg:w-1/2">
           <div class="flex items-center md:order-2">
             <div
               v-if="userPanel"
@@ -40,9 +49,10 @@
                 alt="user photo"
               />
             </div>
+
             <div v-else class="flex space-x-4">
-              <button @click="redir('/signup')"
-                
+              <button
+                @click="redir('/signup')"
                 class="
                   text-white
                   bg-gradient-to-r
@@ -63,8 +73,8 @@
               >
                 Signup!
               </button>
-               <button @click="redir('/login')"
-                
+              <button
+                @click="redir('/login')"
                 class="
                   relative
                   inline-flex
@@ -105,8 +115,7 @@
                 >
                   Log in
                 </span>
-                            </button>
-
+              </button>
             </div>
             <!-- Dropdown menu -->
             <div
@@ -132,9 +141,9 @@
               "
             >
               <div class="py-3 px-4">
-                <span class="block text-sm text-gray-900 dark:text-white"
-                  >{{name}}</span
-                >
+                <span class="block text-sm text-gray-900 dark:text-white">{{
+                  name
+                }}</span>
                 <span
                   class="
                     block
@@ -144,13 +153,13 @@
                     truncate
                     dark:text-gray-400
                   "
-                  >{{email}}</span
+                  >{{ email }}</span
                 >
               </div>
               <div class="py-1" aria-labelledby="user-menu-button">
                 <li>
-                  <router-link to="/user"
-                  
+                  <router-link
+                    to="/user"
                     class="
                       block
                       py-2
@@ -161,11 +170,12 @@
                       dark:text-gray-200
                       dark:hover:text-white
                     "
-                    >Dashboard</router-link>
+                    >Dashboard</router-link
+                  >
                 </li>
                 <li>
-                  <router-link to="/user/settings"
-                   
+                  <router-link
+                    to="/user/settings"
                     class="
                       block
                       py-2
@@ -176,7 +186,8 @@
                       dark:text-gray-200
                       dark:hover:text-white
                     "
-                    >Settings</router-link>
+                    >Settings</router-link
+                  >
                 </li>
                 <li>
                   <div
@@ -191,11 +202,98 @@
                       dark:text-gray-200
                       dark:hover:text-white
                     "
-                    >Sign out</div>
+                  >
+                    Sign out
+                  </div>
                 </li>
               </div>
             </div>
+            <div
+              v-if="showNav"
+              class="
+                absolute
+                z-50
+                top-14
+                right-10
+                my-4 ml-4
+                text-base
+                list-none
+                bg-white
+                rounded-lg
+                divide-y divide-gray-100
+                shadow
+                dark:bg-gray-600 dark:divide-gray-500
+                bg-opacity-60
+              "
+              
+            >
+              <div class="space-y-1  px-4 pt-2 pb-3  ">
+                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                <router-link
+                  to="/pd"
+                  class="
+                    hover:bg-gray-700 hover:text-white
+                    text-blue-700
+                    
+                    
+                    block
+                    px-7
+                    py-2
+                    rounded-md
+                    text-xl
+                    font-medium
+                  "
+                  >Home</router-link
+                >
+
+                <router-link
+                  to="/about"
+                  class="
+                    text-gray-300
+                    hover:bg-gray-700 hover:text-white
+                    block
+                    px-7
+                    py-2
+                    rounded-md
+                    text-xl
+                    font-medium
+                  "
+                  >About</router-link
+                >
+
+                <router-link
+                  to="/pricing"
+                  class="
+                    text-gray-300
+                    hover:bg-gray-700 hover:text-white
+                    block
+                    px-7
+                    py-2
+                    rounded-md
+                    text-xl
+                    font-medium
+                  "
+                  >Pricing</router-link
+                >
+
+                <router-link
+                  to="/contact"
+                  class="
+                    text-gray-300
+                    hover:bg-gray-700 hover:text-white
+                    block
+                    px-7
+                    py-2
+                    rounded-md
+                    text-xl
+                    font-medium
+                  "
+                  >Contact</router-link
+                >
+              </div>
+            </div>
             <button
+              v-if="user"
               @click="$emit('side')"
               type="button"
               class="
@@ -212,8 +310,6 @@
                 dark:hover:bg-gray-700
                 dark:focus:ring-gray-600
               "
-              aria-controls="mobile-menu-2"
-              aria-expanded="false"
             >
               <span class="sr-only">Open main menu</span>
               <svg
@@ -230,8 +326,43 @@
                 ></path>
               </svg>
             </button>
+            <button
+              v-if="!user"
+              @click="toggleNav"
+              type="button"
+              class="
+                inline-flex
+                items-center
+                p-2
+                ml-1
+                text-sm text-gray-500
+                rounded-lg
+                lg:hidden
+                hover:bg-gray-100
+                focus:outline-none focus:ring-2 focus:ring-gray-200
+                dark:text-gray-400
+                dark:hover:bg-gray-700
+                dark:focus:ring-gray-600
+              "
+            >
+              <span class="sr-only">Open main menu</span>
+              <svg
+                class="w-8 h-8"
+                aria-hidden="true"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </button>
           </div>
-          <div 
+
+          <div
             class="
               hidden
               justify-between
@@ -240,7 +371,8 @@
               md:flex md:w-auto md:order-1
             "
           >
-            <ul v-if="!userPanel"
+            <ul
+              v-if="!userPanel"
               class="
                 flex flex-col
                 p-4
@@ -261,8 +393,8 @@
               "
             >
               <li>
-                <router-link to="/pd"
-                  
+                <router-link
+                  to="/pd"
                   class="
                     text-xl
                     block
@@ -276,11 +408,12 @@
                     dark:text-white
                   "
                   aria-current="page"
-                  >Home</router-link>
+                  >Home</router-link
+                >
               </li>
               <li>
-                <router-link to="/about" 
-                  
+                <router-link
+                  to="/about"
                   class="
                     text-xl
                     block
@@ -297,12 +430,13 @@
                     md:dark:hover:bg-transparent
                     dark:border-gray-700
                   "
-                  >About</router-link>
+                  >About</router-link
+                >
               </li>
 
               <li>
-                <router-link to="/pricing" 
-                  
+                <router-link
+                  to="/pricing"
                   class="
                     text-xl
                     block
@@ -319,11 +453,12 @@
                     md:dark:hover:bg-transparent
                     dark:border-gray-700
                   "
-                  >Pricing</router-link>
+                  >Pricing</router-link
+                >
               </li>
               <li>
-                <router-link to="/contact" 
-                  
+                <router-link
+                  to="/contact"
                   class="
                     text-xl
                     block
@@ -340,7 +475,8 @@
                     md:dark:hover:bg-transparent
                     dark:border-gray-700
                   "
-                  >Contact</router-link>
+                  >Contact</router-link
+                >
               </li>
             </ul>
           </div>
@@ -352,33 +488,34 @@
 
 <script>
 export default {
-  props: ["userPanel","user"],
+  props: ["userPanel", "user"],
   data() {
     return {
-      name:sessionStorage.getItem("fullname"),
-      email:sessionStorage.getItem("email"),
+      name: sessionStorage.getItem("fullname"),
+      email: sessionStorage.getItem("email"),
       userMenu: false,
+      showNav: false,
     };
   },
   methods: {
-    redir(e){
-      if(sessionStorage.getItem("isLoggedIn")){
-        this.$router.push('/user')
-      }else
-      this.$router.push(e)
+    redir(e) {
+      if (sessionStorage.getItem("isLoggedIn")) {
+        this.$router.push("/user");
+      } else this.$router.push(e);
     },
     toggleMenu() {
       this.userMenu = !this.userMenu;
     },
-    signOut(){
-      sessionStorage.clear()
-      this.$router.push('/login')
-    }
+    signOut() {
+      sessionStorage.clear();
+      this.$router.push("/login");
+    },
+    toggleNav() {
+      this.showNav = !this.showNav;
+    },
   },
-
 };
 </script>
 
 <style>
-
 </style>

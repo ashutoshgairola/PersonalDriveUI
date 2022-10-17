@@ -56,6 +56,7 @@ const routes = [
     name: "Settings",
     component: Settings,
   },
+
   { path: "/:notFound(.*)", component: NotFound },
 ];
 const router = createRouter({
@@ -71,6 +72,7 @@ router.beforeEach((to, from, next) => {
     to.path === "/about" ||
     to.path === "/pricing" ||
     to.path === "/contact" ||
+    to.path === "/demo" ||
     to.path === "/signup"
   )
     next();

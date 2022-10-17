@@ -63,7 +63,7 @@
           items-center
         "
       >
-        <div v-if="!change" class="opacity-60">
+        <div v-if="!change " class="opacity-60">
           *Click on flies to view details*
         </div>
         <div v-if="change" class="flex flex-col w-full">
@@ -78,7 +78,7 @@
       <div v-if="settings" class="overflow-y-auto py-4 px-3 mt-20">
         <div class="mb-10 text-xl ml-2 font-semibold">
           <div class="p-2" @click="$emit('comp', 'gen')">General</div>
-          <div class="p-2" @click="$emit('comp', 'storage')">Storage</div>
+          <!-- <div class="p-2" @click="$emit('comp', 'storage')">Storage</div> -->
         </div>
         <div class="">
           <router-link
