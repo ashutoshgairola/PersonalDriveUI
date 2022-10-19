@@ -34,20 +34,21 @@
               class="
                 flex
                 mr-3
-                text-sm
                 bg-gray-800
                 rounded-full
                 md:mr-0
+                text-3xl text-primary-400
                 hover:ring-4 hover:ring-gray-300
                 dark:hover:ring-gray-600
               "
             >
               <span class="sr-only">Open user menu</span>
-              <img
+              <!-- <img
                 class="w-8 h-8 rounded-full"
                 src="https://miro.medium.com/max/640/1*B8c1ED3QV_yaa6PAWqDgMw.png"
                 alt="user photo"
-              />
+              /> -->
+              <i class=" fa-solid fa-circle-user"></i>
             </div>
 
             <div v-else class="flex space-x-4">
@@ -73,6 +74,7 @@
               >
                 Signup!
               </button>
+              
               <button
                 @click="redir('/login')"
                 class="
@@ -368,7 +370,7 @@
               justify-between
               items-center
               w-full
-              md:flex md:w-auto md:order-1
+              lg:flex md:w-auto md:order-1
             "
           >
             <ul

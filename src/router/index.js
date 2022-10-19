@@ -12,8 +12,13 @@ import PersonalDrive from "../components/productPage/PersonalDrive.vue";
 
 const routes = [
   {
+    path: "/",
+    name: "Personal Drive",
+    component: PersonalDrive,
+  },
+  {
     path: "/pd",
-    name: "Pd",
+    name: "Personal Drive",
     component: PersonalDrive,
   },
   {
@@ -28,7 +33,7 @@ const routes = [
   },
   {
     path: "/contact",
-    name: "Contact",
+    name: "Contact Us",
     component: Contact,
   },
   {
@@ -43,12 +48,12 @@ const routes = [
   },
   {
     path: "/user",
-    name: "User",
+    name: "Home",
     component: User,
   },
   {
     path: "/user/upload/",
-    name: "Upload",
+    name: "Upload Files",
     component: Upload,
   },
   {
@@ -72,14 +77,17 @@ router.beforeEach((to, from, next) => {
     to.path === "/about" ||
     to.path === "/pricing" ||
     to.path === "/contact" ||
-    to.path === "/demo" ||
+    to.path === "/" ||
     to.path === "/signup"
-  )
+  ) {
+    document.title = to.name;
     next();
+  }
   if (!sessionStorage.getItem("isLoggedIn")) {
+    document.title = to.name;
     next({ path: "/login" });
   } else {
-    console.log("ok", sessionStorage.getItem("isLoggedIn"));
+    document.title = to.name;
     next();
   }
 });

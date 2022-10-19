@@ -233,8 +233,8 @@ import { login } from "../service/UserService";
 export default {
   data() {
     return {
-      email: "test@test.com",
-      password: "test",
+      email: "",
+      password: "",
       success: "",
       loading: false,
     };

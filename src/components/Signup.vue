@@ -267,9 +267,9 @@ import { signup } from "../service/UserService";
 export default {
   data() {
     return {
-      fullName: "Test Case",
-      email: "test@test.com",
-      password: "test",
+      fullName: "",
+      email: "",
+      password: "",
       success: "",
       loading: false,
     };
